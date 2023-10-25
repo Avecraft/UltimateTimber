@@ -1,7 +1,9 @@
 package id.avecraft.songoda.commands;
 
+import id.avecraft.songoda.chat.ChatMessage;
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
 
@@ -58,10 +60,9 @@ public class MainCommand extends AbstractCommand {
         if (header != null) {
             sender.sendMessage(header);
         } else {
-            sender.sendMessage(String.format(
-                    "%s » &7Version %s Created with <3 by #ec4e74&l&oS#fa5b65&l&oo#ff6c55&l&on#ff7f44&l&og#ff9432&l&oo#ffaa1e&l&od#f4c009&l&oa",
-                    plugin.getDescription().getName(), plugin.getDescription().getVersion())
-            );
+            new ChatMessage().fromText(String.format("#ff8080&l%s &8» &7Version %s Created with <3 by #ec4e74&l&oS#fa5b65&l&oo#ff6c55&l&on#ff7f44&l&og#ff9432&l&oo#ffaa1e&l&od#f4c009&l&oa",
+                            plugin.getDescription().getName(), plugin.getDescription().getVersion()), sender instanceof ConsoleCommandSender)
+                    .sendTo(sender);
         }
 
         sender.sendMessage(ChatColor.DARK_GRAY + "- " + ChatColor.YELLOW + "/craftaro" + ChatColor.GRAY + " - Opens the Craftaro plugin GUI");
@@ -84,7 +85,12 @@ public class MainCommand extends AbstractCommand {
                 if (!isPlayer) {
                     sender.sendMessage(ChatColor.DARK_GRAY + "- " + ChatColor.YELLOW + cmd.getSyntax() + ChatColor.GRAY + " - " + cmd.getDescription());
                 } else if (cmd.getPermissionNode() == null || sender.hasPermission(cmd.getPermissionNode())) {
-                    sender.sendMessage(ChatColor.DARK_GRAY + "- " + ChatColor.YELLOW + cmd.getSyntax() + ChatColor.GRAY + " - " + cmd.getDescription());
+                    ChatMessage chatMessage = new ChatMessage();
+                    final String c = "/" + command + " ";
+                    chatMessage.addMessage(ChatColor.DARK_GRAY + "- ")
+                            .addPromptCommand(ChatColor.YELLOW + c + cmd.getSyntax(), ChatColor.YELLOW + c + cmdStr, c + cmdStr)
+                            .addMessage(ChatColor.GRAY + " - " + cmd.getDescription());
+                    chatMessage.sendTo(sender);
                 }
             }
         }

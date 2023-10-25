@@ -3,6 +3,7 @@ package id.avecraft.songoda;
 import de.tr7zw.changeme.nbtapi.utils.MinecraftVersion;
 import id.avecraft.songoda.configuration.Config;
 import id.avecraft.songoda.database.DataManagerAbstract;
+import id.avecraft.songoda.locale.Locale;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandSender;
@@ -17,6 +18,7 @@ import java.util.logging.Level;
  * Must not have two instances of Metrics enabled!
  */
 public abstract class SongodaPlugin extends JavaPlugin {
+    protected Locale locale;
     protected Config config = new Config(this);
     protected long dataLoadDelay = 20L;
 
@@ -87,7 +89,6 @@ public abstract class SongodaPlugin extends JavaPlugin {
 
         CommandSender console = Bukkit.getConsoleSender();
 
-        // Check plugin access, don't load plugin if user don't have access
         console.sendMessage(" "); // blank line to separate chatter
         console.sendMessage(ChatColor.GREEN + "=============================");
         console.sendMessage(String.format("%s%s %s by %sCraftaro <3!", ChatColor.GRAY,
@@ -96,6 +97,7 @@ public abstract class SongodaPlugin extends JavaPlugin {
                 ChatColor.GREEN, "Enabling", ChatColor.GRAY));
 
         try {
+            this.locale = Locale.loadDefaultLocale(this, "en_US");
 
             // plugin setup
             onPluginEnable();
@@ -114,6 +116,7 @@ public abstract class SongodaPlugin extends JavaPlugin {
             }
 
             // Start Metrics
+//            Metrics.start(this);
         } catch (Throwable th) {
             criticalErrorOnPluginStartup(th);
 
@@ -148,6 +151,9 @@ public abstract class SongodaPlugin extends JavaPlugin {
         console.sendMessage(" "); // blank line to separate chatter
     }
 
+    public Locale getLocale() {
+        return this.locale;
+    }
 
     /**
      * Set the plugin's locale to a specific language
@@ -158,7 +164,19 @@ public abstract class SongodaPlugin extends JavaPlugin {
      *
      * @return true if the locale exists and was loaded successfully
      */
+    public boolean setLocale(String localeName, boolean reload) {
+        if (this.locale != null && this.locale.getName().equals(localeName)) {
+            return !reload || this.locale.reloadMessages();
+        }
 
+        Locale l = Locale.loadLocale(this, localeName);
+        if (l != null) {
+            this.locale = l;
+            return true;
+        }
+
+        return false;
+    }
 
     protected void shutdownDataManager(DataManagerAbstract dataManager) {
         // 3 minutes is overkill, but we just want to make sure
@@ -211,9 +229,11 @@ public abstract class SongodaPlugin extends JavaPlugin {
     protected void criticalErrorOnPluginStartup(Throwable th) {
         Bukkit.getLogger().log(Level.SEVERE,
                 String.format(
-                        "Unexpected error while loading %s v%s: Disabling plugin!",
+                        "Unexpected error while loading %s v%s (core v%s): Disabling plugin!",
                         getDescription().getName(),
-                        getDescription().getVersion()), th);
+                        getDescription().getVersion(),
+                        "Stress"
+                ), th);
 
         emergencyStop();
     }
