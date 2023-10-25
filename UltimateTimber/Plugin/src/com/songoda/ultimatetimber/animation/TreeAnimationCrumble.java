@@ -1,6 +1,5 @@
 package com.songoda.ultimatetimber.animation;
 
-import com.songoda.core.compatibility.CompatibleMaterial;
 import com.songoda.ultimatetimber.UltimateTimber;
 import com.songoda.ultimatetimber.manager.ConfigurationManager;
 import com.songoda.ultimatetimber.tree.DetectedTree;
@@ -13,6 +12,7 @@ import com.songoda.ultimatetimber.tree.TreeDefinition;
 import com.songoda.ultimatetimber.utils.BlockUtils;
 import com.songoda.ultimatetimber.utils.ParticleUtils;
 import com.songoda.ultimatetimber.utils.SoundUtils;
+import id.avecraft.songoda.compatibility.CompatibleMaterial;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;

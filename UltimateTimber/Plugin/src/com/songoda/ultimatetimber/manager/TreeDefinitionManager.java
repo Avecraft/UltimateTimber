@@ -1,17 +1,17 @@
 package com.songoda.ultimatetimber.manager;
 
 import com.google.common.base.Strings;
-import com.songoda.core.compatibility.CompatibleMaterial;
-import com.songoda.core.compatibility.ServerVersion;
-import com.songoda.core.hooks.McMMOHook;
-import com.songoda.core.third_party.de.tr7zw.nbtapi.NBTItem;
-import com.songoda.core.utils.TextUtils;
 import com.songoda.ultimatetimber.UltimateTimber;
 import com.songoda.ultimatetimber.tree.ITreeBlock;
 import com.songoda.ultimatetimber.tree.TreeBlockType;
 import com.songoda.ultimatetimber.tree.TreeDefinition;
 import com.songoda.ultimatetimber.tree.TreeLoot;
 import com.songoda.ultimatetimber.utils.BlockUtils;
+import de.tr7zw.changeme.nbtapi.NBTItem;
+import id.avecraft.songoda.compatibility.ServerVersion;
+import id.avecraft.songoda.utils.TextUtils;
+import id.avecraft.songoda.compatibility.CompatibleMaterial;
+import id.avecraft.songoda.hooks.McMMOHook;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.NamespacedKey;

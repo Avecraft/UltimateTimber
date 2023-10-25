@@ -1,7 +1,5 @@
 package com.songoda.ultimatetimber.animation;
 
-import com.songoda.core.compatibility.CompatibleHand;
-import com.songoda.core.compatibility.CompatibleMaterial;
 import com.songoda.ultimatetimber.UltimateTimber;
 import com.songoda.ultimatetimber.tree.DetectedTree;
 import com.songoda.ultimatetimber.tree.FallingTreeBlock;
@@ -9,7 +7,8 @@ import com.songoda.ultimatetimber.tree.ITreeBlock;
 import com.songoda.ultimatetimber.tree.TreeBlock;
 import com.songoda.ultimatetimber.tree.TreeBlockSet;
 import com.songoda.ultimatetimber.utils.BlockUtils;
-import org.bukkit.Bukkit;
+import id.avecraft.songoda.compatibility.CompatibleHand;
+import id.avecraft.songoda.compatibility.CompatibleMaterial;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.block.Block;

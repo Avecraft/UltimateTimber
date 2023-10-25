@@ -12,8 +12,10 @@ import com.songoda.ultimatetimber.manager.TreeAnimationManager;
 import com.songoda.ultimatetimber.manager.TreeDefinitionManager;
 import com.songoda.ultimatetimber.manager.TreeDetectionManager;
 import com.songoda.ultimatetimber.manager.TreeFallManager;
-import id.avecraft.ultimatetimber.Config;
-import id.avecraft.ultimatetimber.SongodaPlugin;
+import id.avecraft.songoda.configuration.Config;
+import id.avecraft.songoda.SongodaPlugin;
+import id.avecraft.songoda.commands.CommandManager;
+
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -24,7 +26,7 @@ public class UltimateTimber extends SongodaPlugin {
     private Set<Manager> managers;
     private ChoppingManager choppingManager;
     private ConfigurationManager configurationManager;
-    private id.avecraft.ultimatetimber.CommandManager commandManager;
+    private CommandManager commandManager;
     private PlacedBlockManager placedBlockManager;
     private SaplingManager saplingManager;
     private TreeAnimationManager treeAnimationManager;
@@ -45,7 +47,7 @@ public class UltimateTimber extends SongodaPlugin {
     public void onPluginEnable() {
         // Load hooks
         // Setup plugin commands
-        this.commandManager = new id.avecraft.ultimatetimber.CommandManager(this);
+        this.commandManager = new CommandManager(this);
         this.commandManager.addMainCommand("ut")
                 .addSubCommands(
                         new CommandReload(this),
@@ -80,7 +82,6 @@ public class UltimateTimber extends SongodaPlugin {
     public void onConfigReload() {
         this.configurationManager.reload();
         this.managers.forEach(Manager::reload);
-        this.setLocale(getConfig().getString("locale"), true);
     }
 
     @Override

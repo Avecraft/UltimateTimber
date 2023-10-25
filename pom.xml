@@ -20,6 +20,12 @@
         </repository>
 
         <repository>
+            <id>minecraft-repo</id>
+            <url>https://libraries.minecraft.net/</url>
+        </repository>
+
+
+        <repository>
             <id>codemc-repo</id>
             <url>https://repo.codemc.io/repository/maven-public/</url>
             <layout>default</layout>

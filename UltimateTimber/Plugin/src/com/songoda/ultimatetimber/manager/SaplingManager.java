@@ -1,10 +1,10 @@
 package com.songoda.ultimatetimber.manager;
 
-import com.songoda.core.compatibility.CompatibleMaterial;
 import com.songoda.ultimatetimber.UltimateTimber;
 import com.songoda.ultimatetimber.tree.ITreeBlock;
 import com.songoda.ultimatetimber.tree.TreeBlockType;
 import com.songoda.ultimatetimber.tree.TreeDefinition;
+import id.avecraft.songoda.compatibility.CompatibleMaterial;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.Material;

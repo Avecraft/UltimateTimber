@@ -1,11 +1,5 @@
 package com.songoda.ultimatetimber.manager;
 
-import com.songoda.core.compatibility.CompatibleHand;
-import com.songoda.core.hooks.JobsHook;
-import com.songoda.core.hooks.LogManager;
-import com.songoda.core.hooks.McMMOHook;
-import com.songoda.core.utils.ItemUtils;
-import com.songoda.core.world.SItemStack;
 import com.songoda.ultimatetimber.UltimateTimber;
 import com.songoda.ultimatetimber.events.TreeFallEvent;
 import com.songoda.ultimatetimber.events.TreeFellEvent;
@@ -13,6 +7,11 @@ import com.songoda.ultimatetimber.misc.OnlyToppleWhile;
 import com.songoda.ultimatetimber.tree.DetectedTree;
 import com.songoda.ultimatetimber.tree.ITreeBlock;
 import com.songoda.ultimatetimber.tree.TreeBlockSet;
+import id.avecraft.songoda.compatibility.CompatibleHand;
+import id.avecraft.songoda.utils.ItemUtils;
+import id.avecraft.songoda.hooks.JobsHook;
+import id.avecraft.songoda.hooks.McMMOHook;
+import id.avecraft.songoda.world.SItemStack;
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
 import org.bukkit.Material;
@@ -156,7 +155,6 @@ public class TreeFallManager extends Manager implements Listener {
         }
 
         for (ITreeBlock<Block> treeBlock : detectedTree.getDetectedTreeBlocks().getAllTreeBlocks())
-            LogManager.logRemoval(player, treeBlock.getBlock());
 
         treeAnimationManager.runAnimation(detectedTree, player);
         treeDefinitionManager.dropTreeLoot(detectedTree.getTreeDefinition(), detectedTree.getDetectedTreeBlocks().getInitialLogBlock(), player, false, true);

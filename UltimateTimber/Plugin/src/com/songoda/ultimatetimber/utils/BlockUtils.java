@@ -1,8 +1,8 @@
 package com.songoda.ultimatetimber.utils;
 
-import com.songoda.core.compatibility.CompatibleMaterial;
-import com.songoda.core.compatibility.ServerVersion;
 import com.songoda.ultimatetimber.tree.ITreeBlock;
+import id.avecraft.songoda.compatibility.ServerVersion;
+import id.avecraft.songoda.compatibility.CompatibleMaterial;
 import org.bukkit.Location;
 import org.bukkit.block.Block;
 import org.bukkit.entity.FallingBlock;
