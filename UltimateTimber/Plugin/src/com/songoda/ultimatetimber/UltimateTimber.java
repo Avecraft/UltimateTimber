@@ -12,9 +12,7 @@ import com.songoda.ultimatetimber.manager.TreeAnimationManager;
 import com.songoda.ultimatetimber.manager.TreeDefinitionManager;
 import com.songoda.ultimatetimber.manager.TreeDetectionManager;
 import com.songoda.ultimatetimber.manager.TreeFallManager;
-import id.avecraft.ultimatetimber.CompatibleMaterial;
 import id.avecraft.ultimatetimber.Config;
-import id.avecraft.ultimatetimber.SongodaCore;
 import id.avecraft.ultimatetimber.SongodaPlugin;
 import java.util.HashSet;
 import java.util.List;
@@ -45,9 +43,6 @@ public class UltimateTimber extends SongodaPlugin {
 
     @Override
     public void onPluginEnable() {
-        // Run Songoda Updater
-        SongodaCore.registerPlugin(this, 18, CompatibleMaterial.IRON_AXE);
-
         // Load hooks
         // Setup plugin commands
         this.commandManager = new id.avecraft.ultimatetimber.CommandManager(this);
