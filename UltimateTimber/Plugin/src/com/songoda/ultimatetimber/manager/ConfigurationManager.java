@@ -3,7 +3,6 @@ package com.songoda.ultimatetimber.manager;
 import com.songoda.ultimatetimber.UltimateTimber;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
-
 import java.io.File;
 import java.util.List;
 

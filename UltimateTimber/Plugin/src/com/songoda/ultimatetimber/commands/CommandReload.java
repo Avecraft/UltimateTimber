@@ -1,7 +1,7 @@
 package com.songoda.ultimatetimber.commands;
 
-import com.songoda.core.commands.AbstractCommand;
 import com.songoda.ultimatetimber.UltimateTimber;
+import id.avecraft.ultimatetimber.AbstractCommand;
 import org.bukkit.command.CommandSender;
 
 import java.util.List;

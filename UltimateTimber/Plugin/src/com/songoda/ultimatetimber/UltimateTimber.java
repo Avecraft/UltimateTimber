@@ -1,10 +1,5 @@
 package com.songoda.ultimatetimber;
 
-import com.songoda.core.SongodaCore;
-import com.songoda.core.SongodaPlugin;
-import com.songoda.core.compatibility.CompatibleMaterial;
-import com.songoda.core.configuration.Config;
-import com.songoda.core.hooks.LogManager;
 import com.songoda.ultimatetimber.commands.CommandGiveAxe;
 import com.songoda.ultimatetimber.commands.CommandReload;
 import com.songoda.ultimatetimber.commands.CommandToggle;
@@ -17,7 +12,10 @@ import com.songoda.ultimatetimber.manager.TreeAnimationManager;
 import com.songoda.ultimatetimber.manager.TreeDefinitionManager;
 import com.songoda.ultimatetimber.manager.TreeDetectionManager;
 import com.songoda.ultimatetimber.manager.TreeFallManager;
-
+import id.avecraft.ultimatetimber.CompatibleMaterial;
+import id.avecraft.ultimatetimber.Config;
+import id.avecraft.ultimatetimber.SongodaCore;
+import id.avecraft.ultimatetimber.SongodaPlugin;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -25,12 +23,10 @@ import java.util.Set;
 public class UltimateTimber extends SongodaPlugin {
 
     private static UltimateTimber INSTANCE;
-
     private Set<Manager> managers;
-
     private ChoppingManager choppingManager;
     private ConfigurationManager configurationManager;
-    private com.songoda.core.commands.CommandManager commandManager;
+    private id.avecraft.ultimatetimber.CommandManager commandManager;
     private PlacedBlockManager placedBlockManager;
     private SaplingManager saplingManager;
     private TreeAnimationManager treeAnimationManager;
@@ -53,10 +49,8 @@ public class UltimateTimber extends SongodaPlugin {
         SongodaCore.registerPlugin(this, 18, CompatibleMaterial.IRON_AXE);
 
         // Load hooks
-        LogManager.load();
-
         // Setup plugin commands
-        this.commandManager = new com.songoda.core.commands.CommandManager(this);
+        this.commandManager = new id.avecraft.ultimatetimber.CommandManager(this);
         this.commandManager.addMainCommand("ut")
                 .addSubCommands(
                         new CommandReload(this),
