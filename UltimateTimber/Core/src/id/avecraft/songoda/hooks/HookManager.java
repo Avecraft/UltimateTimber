@@ -35,7 +35,6 @@ public class HookManager<T extends Hook> {
         if (!loaded) {
             registeredHooks.putAll(PluginHook.loadHooks(typeClass, hookingPlugin).entrySet().stream()
                     .collect(Collectors.toMap(Map.Entry::getKey, e -> (T) e.getValue())));
-
             if (!registeredHooks.isEmpty()) {
                 defaultHook = registeredHooks.values().iterator().next();
             }

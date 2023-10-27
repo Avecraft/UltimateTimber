@@ -31,7 +31,6 @@ public final class PluginHook<T extends Class> {
 //    public static final PluginHook PROTECTION_ULTIMATECLAIMS = new PluginHook(Protection.class, "UltimateClaims", UltimateClaimsProtection.class);
 //    public static final PluginHook PROTECTION_BENTOBOX = new PluginHook(Protection.class, "BentoBox", BentoBoxProtection.class);
 //    public static final PluginHook PROTECTION_RESIDENCE = new PluginHook(Protection.class, "Residence", ResidenceProtection.class);
-
     /******* Start Manager stuff *******/
 
     protected final T hookGeneric;

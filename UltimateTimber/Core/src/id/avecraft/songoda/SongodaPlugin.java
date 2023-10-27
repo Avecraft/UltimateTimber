@@ -1,8 +1,10 @@
 package id.avecraft.songoda;
 
+import com.comphenix.protocol.ProtocolManager;
 import de.tr7zw.changeme.nbtapi.utils.MinecraftVersion;
 import id.avecraft.songoda.configuration.Config;
 import id.avecraft.songoda.database.DataManagerAbstract;
+import id.avecraft.songoda.hooks.ProtocolLibHook;
 import id.avecraft.songoda.locale.Locale;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -73,6 +75,10 @@ public abstract class SongodaPlugin extends JavaPlugin {
     @Override
     public final void onLoad() {
         try {
+            ProtocolManager protocolLibInstance = ProtocolLibHook.load();
+            if(protocolLibInstance == null) {
+                throw new IllegalStateException("ProtocolLib is not installed!");
+            }
             onPluginLoad();
         } catch (Throwable th) {
             criticalErrorOnPluginStartup(th);

@@ -1,15 +1,17 @@
 package id.avecraft.songoda.chat;
 
+import com.comphenix.protocol.PacketType;
+import com.comphenix.protocol.events.PacketContainer;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
 import id.avecraft.songoda.compatibility.ClassMapping;
 import id.avecraft.songoda.compatibility.ServerVersion;
+import id.avecraft.songoda.hooks.ProtocolLibHook;
 import id.avecraft.songoda.utils.TextUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
-
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
@@ -219,28 +221,12 @@ public class ChatMessage {
 
     public void sendTo(ChatMessage prefix, CommandSender sender) {
         if (sender instanceof Player && enabled) {
-            try {
-                List<JsonObject> textList = prefix == null ? new ArrayList<>() : new ArrayList<>(prefix.textList);
-                textList.addAll(this.textList);
-
-                Object packet;
-                if (ServerVersion.isServerVersionAtLeast(ServerVersion.V1_19)) {
-                    packet = mc_PacketPlayOutChat_new.newInstance(mc_IChatBaseComponent_ChatSerializer_a.invoke(null, gson.toJson(textList)), mc_PacketPlayOutChat_new_1_19_0 ? 1 : false);
-                } else if (ServerVersion.isServerVersionAtLeast(ServerVersion.V1_16)) {
-                    packet = mc_PacketPlayOutChat_new.newInstance(
-                            mc_IChatBaseComponent_ChatSerializer_a.invoke(null, gson.toJson(textList)),
-                            mc_chatMessageType_Chat.get(null),
-                            ((Player) sender).getUniqueId());
-                } else {
-                    packet = mc_PacketPlayOutChat_new.newInstance(mc_IChatBaseComponent_ChatSerializer_a.invoke(null, gson.toJson(textList)));
-                }
-                System.out.println(packet);
-//                Nms.getImplementations().getPlayer().sendPacket((Player) sender, packet);
-            } catch (ReflectiveOperationException | IllegalArgumentException ex) {
-                Bukkit.getLogger().log(Level.WARNING, "Problem preparing raw chat packets (disabling further packets)", ex);
-                enabled = false;
-            }
-
+            List<JsonObject> textList = prefix == null ? new ArrayList<>() : new ArrayList<>(prefix.textList);
+            textList.addAll(this.textList);
+            PacketContainer packetContainer = new PacketContainer(PacketType.Play.Server.SYSTEM_CHAT);
+            packetContainer.getStrings().write(0, gson.toJson(textList));
+            packetContainer.getBooleans().write(0, false);
+            ProtocolLibHook.getManager().sendServerPacket((Player) sender, packetContainer);
             return;
         }
 

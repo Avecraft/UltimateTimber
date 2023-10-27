@@ -4,6 +4,7 @@ authors: [Songoda]
 main: com.songoda.ultimatetimber.UltimateTimber
 api-version: 1.13
 softdepend: [mcMMO, Jobs, CoreProtect]
+depend: [ ProtocolLib ]
 commands:
   ut:
     description: Reloads the configuration file
