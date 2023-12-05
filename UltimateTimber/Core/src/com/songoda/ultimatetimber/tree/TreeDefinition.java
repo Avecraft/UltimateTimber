@@ -1,6 +1,6 @@
 package com.songoda.ultimatetimber.tree;
 
-import id.avecraft.songoda.compatibility.CompatibleMaterial;
+import org.stegripe.songoda.compatibility.CompatibleMaterial;
 import org.bukkit.inventory.ItemStack;
 
 import java.util.Collections;

@@ -12,7 +12,7 @@ import com.songoda.ultimatetimber.tree.TreeDefinition;
 import com.songoda.ultimatetimber.utils.BlockUtils;
 import com.songoda.ultimatetimber.utils.ParticleUtils;
 import com.songoda.ultimatetimber.utils.SoundUtils;
-import id.avecraft.songoda.compatibility.CompatibleMaterial;
+import org.stegripe.songoda.compatibility.CompatibleMaterial;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;

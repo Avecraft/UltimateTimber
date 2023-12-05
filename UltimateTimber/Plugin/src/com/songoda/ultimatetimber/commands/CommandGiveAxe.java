@@ -1,8 +1,8 @@
 package com.songoda.ultimatetimber.commands;
 
 import com.songoda.ultimatetimber.UltimateTimber;
-import id.avecraft.songoda.commands.AbstractCommand;
-import id.avecraft.songoda.utils.PlayerUtils;
+import org.stegripe.songoda.commands.AbstractCommand;
+import org.stegripe.songoda.utils.PlayerUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;

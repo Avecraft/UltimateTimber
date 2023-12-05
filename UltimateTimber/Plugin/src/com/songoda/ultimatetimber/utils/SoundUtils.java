@@ -2,7 +2,7 @@ package com.songoda.ultimatetimber.utils;
 
 import com.songoda.ultimatetimber.tree.ITreeBlock;
 import com.songoda.ultimatetimber.tree.TreeBlockType;
-import id.avecraft.songoda.compatibility.CompatibleSound;
+import org.stegripe.songoda.compatibility.CompatibleSound;
 import org.bukkit.Location;
 
 public class SoundUtils {

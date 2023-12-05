@@ -1,7 +1,7 @@
 package com.songoda.ultimatetimber.utils;
 
 import com.songoda.ultimatetimber.tree.ITreeBlock;
-import id.avecraft.songoda.compatibility.ServerVersion;
+import org.stegripe.songoda.compatibility.ServerVersion;
 import org.bukkit.Effect;
 import org.bukkit.Location;
 import org.bukkit.Particle;

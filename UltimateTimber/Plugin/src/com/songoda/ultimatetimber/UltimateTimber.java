@@ -12,9 +12,9 @@ import com.songoda.ultimatetimber.manager.TreeAnimationManager;
 import com.songoda.ultimatetimber.manager.TreeDefinitionManager;
 import com.songoda.ultimatetimber.manager.TreeDetectionManager;
 import com.songoda.ultimatetimber.manager.TreeFallManager;
-import id.avecraft.songoda.configuration.Config;
-import id.avecraft.songoda.SongodaPlugin;
-import id.avecraft.songoda.commands.CommandManager;
+import org.stegripe.songoda.configuration.Config;
+import org.stegripe.songoda.SongodaPlugin;
+import org.stegripe.songoda.commands.CommandManager;
 
 import java.util.HashSet;
 import java.util.List;
