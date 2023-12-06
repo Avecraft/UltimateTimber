@@ -3,7 +3,7 @@
 
     <groupId>com.songoda</groupId>
     <artifactId>UltimateTimber</artifactId>
-    <version>2.3.7-avecraft.1.0.0</version>
+    <version>2.3.7-stegrape.1.0.1</version>
     <packaging>pom</packaging>
 
     <!-- Run 'mvn versions:set -DgenerateBackupPoms=false -DnewVersion=X.Y.Z' to update version recursively -->
