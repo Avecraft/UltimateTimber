@@ -1,8 +1,8 @@
 package org.stegripe.songoda.world;
 
+import org.bukkit.Sound;
 import org.stegripe.songoda.compatibility.ServerVersion;
 import org.stegripe.songoda.compatibility.CompatibleHand;
-import org.stegripe.songoda.compatibility.CompatibleSound;
 import org.bukkit.Bukkit;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
@@ -83,8 +83,7 @@ public class SItemStack {
     public void destroy(Player player, int amount) {
         PlayerItemBreakEvent breakEvent = new PlayerItemBreakEvent(player, item);
         Bukkit.getServer().getPluginManager().callEvent(breakEvent);
-
-        CompatibleSound.ENTITY_ITEM_BREAK.play(player);
+        player.getLocation().getWorld().playSound(player.getLocation(), Sound.ENTITY_ITEM_BREAK, 1.0F, 1.0F);
     }
 
     public ItemStack getItem() {
